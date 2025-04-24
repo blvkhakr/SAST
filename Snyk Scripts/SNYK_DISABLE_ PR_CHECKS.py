@@ -47,7 +47,7 @@ def get_snyk_projects(org_id):
 
 # Get the default branch of a GitHub repo
 def get_default_branch(repo_full_name):
-    response = requests.get(f"https://api.github.com/repos/{repo_full_name}", headers=HEADERS_GITHUB)
+    response = requests.get(f"https://[INSERT_ENTERPRISE_DOMAIN_NAME].github.com/repos/{repo_full_name}", headers=HEADERS_GITHUB)  # < -- This can also be used for github, just change the url
     if response.status_code == 200:
         return response.json().get("default_branch")
     return None
@@ -55,7 +55,7 @@ def get_default_branch(repo_full_name):
 
 # Get current branch protection rules from GitHub
 def get_branch_protection(repo_full_name, branch):
-    url = f"https://api.github.com/repos/{repo_full_name}/branches/{branch}/protection"
+    url = f"ttps://[INSERT_ENTERPRISE_DOMAIN_NAME].github.com/repos/{repo_full_name}/branches/{branch}/protection"
     response = requests.get(url, headers=HEADERS_GITHUB)
     if response.status_code == 200:
         return response.json()
